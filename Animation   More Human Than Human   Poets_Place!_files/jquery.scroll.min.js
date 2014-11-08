@@ -1,0 +1,7 @@
+
+jQuery(function(){jQuery.fn.scrollToTop=function(options){if(options.speed){var speed=options.speed;}else{var speed="slow";}
+if(options.ease){var ease=options.ease;}else{var ease="jswing";}
+if(options.start){var start=options.start;}else{var start="0";}
+var scrollDiv=jQuery(this);jQuery(this).hide().removeAttr("href");if(jQuery(window).scrollTop()>start){jQuery(this).fadeIn("slow");}
+var FadeLock=0;jQuery(window).scroll(function(){if(!FadeLock){FadeLock=1;setTimeout(function(){if(FadeLock){if(jQuery(window).scrollTop()>start){jQuery(scrollDiv).fadeIn("slow");}else{jQuery(scrollDiv).fadeOut("slow");}
+FadeLock=0;}},200);}});var ClickLock=0;jQuery(this).click(function(event){if(!ClickLock){ClickLock=1;setTimeout(function(){if(ClickLock){jQuery("html, body").animate({scrollTop:"0px"},speed,ease);ClickLock=0;}},200);}});}});

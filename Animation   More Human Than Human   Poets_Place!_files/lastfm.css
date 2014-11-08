@@ -1,0 +1,147 @@
+#lastfm_recent
+{
+	border-bottom: 0px solid white;
+	display: table;
+	position: relative;
+	width: auto;
+}
+#lastfm_recent li
+{
+	background: none;
+	background-color: transparent;
+	display: table-row;
+	line-height: 14px;
+	list-style-type: none !important;
+	min-height: 70px;
+	padding: 5px;
+	
+}
+#lastfm_recent li a.lastfm_recent_title
+{
+	font-size: 11px;
+	font-weight: bold;
+	margin: 0px;
+	padding: 0px;
+	text-decoration: none;
+}
+#lastfm_recent li span.lastfm_recent_date
+{
+	color: #2d3538;
+	font-size: 11px;
+	font-weight: normal !important;
+	margin: 0;
+	padding: 0;
+}
+#lastfm_recent li span.lastfm_recent_artist a
+{
+	color: #0099cc;
+	font-size: 11px;
+	font-weight: normal !important;
+	text-decoration: none;
+}
+#lastfm_recent li div.lastfm_recent_image
+{
+	padding: 2px 0px 2px 2px;	
+	position:relative;
+	left:0px;
+	top:0px;
+}
+#lastfm_recent li div.lastfm_recent_image a
+{
+	border: 0px;
+}
+
+.lastfm_pan_frame
+{
+	background: url(images/border.png) no-repeat;
+	overflow: hidden;
+	position: absolute;
+	top: 2px;
+	left: -1px;
+	width:71px;
+	height:67px;
+}
+
+#lastfm_recent li div.lastfm_recent_image img
+{
+	border: 0px solid white !important;
+	height: 64px !important;
+	margin: 0px;
+	margin-bottom: 1px;
+	margin-right: 8px;
+	margin-top: 2px;
+	padding: 0px;
+	width: 64px !important;
+	
+}
+
+.lastfm-recent-left
+{
+	float: left;
+}
+.lastfm-recent-left img
+{
+	margin-left: 2px !important;
+}
+.lastfm-recent-right
+{
+	float: right;
+}
+.lastfm-recent-right img
+{
+	margin-left: 2px !important;
+}
+.lastfm_recent_realname
+{
+	font-size: 12px;
+}
+.lastfm_recent_logo
+{
+	float: right;
+	height: 24px;
+	margin: 0;
+	margin-top: -3px;
+	padding: 0;
+	padding-right: 2px;
+	width: 62px;
+}
+#lastfm_recent_userbadge
+{
+	clear: both;
+	margin: 0;
+	margin-bottom: 10px;
+	padding: 0px;
+	padding: 5px;
+}
+#lastfm_user_image
+{
+	border: 1px solid silver;
+	margin: 0px;
+	margin-left:-6px;
+	padding:1px;
+	width: 80px;
+	
+}
+
+.lastfm_badge_table
+{
+	border:0px solid red;
+}
+.lastfm_badge_content
+{
+	font-size: 11px;
+	line-height: 14px;
+	margin: 0;
+	padding: 4px;
+	width: auto;
+}
+.lastfm_recent_grayed
+{
+	background-color: transparent;
+}
+.lastfm_recent_recent
+{
+	background-color: transparent;
+}
+
+

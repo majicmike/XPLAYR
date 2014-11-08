@@ -1,0 +1,20 @@
+﻿#gtt_go-to-top a {
+	font: normal 12px/150% verdana, arial, helvetica, sans-serif;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+}
+#gtt_go-to-top a {
+	width:auto;
+	background:#f1f1f1;
+	border:1px solid #3CAEE3;
+	text-align:center;
+	padding:3px 20px;
+	position:fixed;
+	bottom:80px;
+	right:10px;
+	cursor:pointer;
+	color:#666;
+	text-decoration:italic;
+	z-index: 100;
+}

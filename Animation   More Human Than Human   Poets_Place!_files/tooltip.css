@@ -1,0 +1,167 @@
+/**
+ * Tooltip styles
+ * Important leading _ needs to be escaped for IE
+ **/
+
+    
+    
+#\_rpuTooltip
+{
+  z-index:99999;
+  font-family:\"Helvetica Neue\", Helvetica, Arial, sans-serif;
+  font-weight:700;
+  font-size:13px;
+  color:#333;
+  width:auto;
+  background:transparent;
+  /*border:#aaa solid 1px;
+  -moz-box-shadow:0 0 4px #ccc;
+  -webkit-box-shadow:0 0 4px #ccc;
+  box-shadow:0 0 4px #ccc;
+  -webkit-border-radius:3px;
+  -moz-border-radius:3px;
+  border-radius:3px;*/
+  display:none;
+}
+
+#\_rpuTooltip div
+{
+  clear:none;
+}
+
+#\_rpuTooltip .\_rpuTipWrap
+{
+  width:150px;
+  padding:7px 10px;
+}
+
+#\_rpuTooltip .\_rpuTipWrapWide
+{
+  width:200px;
+}
+
+#\_rpuTooltip .\_rpuTipContent
+{
+  text-align:center;
+  padding-bottom:4px;
+  /*border-bottom:#ccc solid 1px;*/
+  text-shadow:0 1px 0 #fff;
+}
+
+#\_rpuTooltip .\_rpuMoreDetail
+{
+  line-height:1.3em;
+  font-weight:400;
+  border-bottom:#ccc solid 1px;
+  text-shadow:0 1px 0 #fff;
+  padding:5px 0;
+}
+
+#\_rpuTooltip a.\_rpuMoreInfo
+{
+  position:absolute;
+  z-index:10001;
+  top:3px;
+  right:3px;
+}
+
+#\_rpuTooltip a.\_rpuCloseInfo
+{
+  display:none;
+  position:absolute;
+  z-index:10001;
+  top:3px;
+  right:3px;
+}
+
+.\_rpuSprites
+{
+  background:url(http://static.1.rp-api.com/rjs/images/sprites.png);
+  background-repeat:no-repeat;
+  width:15px;
+  height:15px;
+  margin:0;
+}
+
+#\_rpuTooltip a.\_rpuMoreInfo .\_rpuSprites
+{
+  background-position:0 0;
+}
+
+#\_rpuTooltip a:hover.\_rpuCloseInfo .\_rpuSprites
+{
+  background-position:0 -45px;
+}
+
+#\_rpuTooltip a.\_rpuCloseInfo .\_rpuSprites
+{
+  background-position:0 -30px;
+}
+
+#\_rpuTooltip a.\_rpuGet
+{
+  float:right;
+  font-size:.8em;
+  padding:6px 0;
+}
+
+#\_rpuTooltip a.\_rpuPreview
+{
+  display:none;
+  float:left;
+  font-size:.8em;
+  padding:6px 0;
+}
+
+#\_rpuTooltip a
+{
+  border-bottom:#eee dotted 1px;
+  text-decoration:none;
+  color:#06f;
+}
+
+#\_rpuTooltip a:hover
+{
+  border-bottom:#999 dotted 1px;
+  -webkit-transition:color .3s ease-in;
+  color:red;
+}
+
+#\_rpuTooltip .\_rpuPoweredBy
+{
+  font-size:x-small;
+  text-align:right;
+}
+
+.rpuRoundShadow
+{
+  border:#aaa solid 1px;
+  -moz-box-shadow:0 0 4px #ccc;
+  -webkit-box-shadow:0 0 4px #ccc;
+  box-shadow:0 0 4px #ccc;
+  -webkit-border-radius:3px;
+  -moz-border-radius:3px;
+  border-radius:3px;
+}
+
+#rpuIframeClose
+{
+  background-image:url(http://static.1.rp-api.com/rjs/images/sprites.png);
+  background-repeat:no-repeat;
+  background-position:0 -30px;
+  width:15px;
+  height:15px;
+  z-index:9999999;
+  background-color:transparent;
+  position:absolute;
+  top: 5px;
+  right: 5px;
+  margin:0x;
+  padding:0;
+}
+
+#rpuIframeClose:hover
+{
+  background-position:0 -45px;
+  cursor:pointer;
+}

@@ -1,0 +1,931 @@
+/*
+Plugin Name: Ayo Shortcodes
+Plugin URI: https://plugins.ayothemes.com/ayo-shortcodes
+Description: Ayo Shortcodes is a simple and flexible plugin to generate visual design element via shortcode.
+Author: AyoThemes
+Author URI: http://ayothemes.com/
+
+Version: 0.1
+
+License: GNU General Public License v2.0 (or later)
+License URI: http://www.opensource.org/licenses/gpl-license.php
+*/
+
+/* Ayo Social
+-------------------------------------------------------------- */
+@font-face {
+    font-family: 'fontello';
+    src: url("../font/fontello.eot");
+    src: url("../font/fontello.eot?#iefix") format('embedded-opentype'), url("../font/fontello.woff") format('woff'), url("../font/fontello.ttf") format('truetype'), url("../font/fontello.svg#fontello") format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+[class^="ayoicon-"]:before,
+[class*=" ayoicon-"]:before {
+    font-family: 'fontello';
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: 0.2em;
+    text-align: center;
+    opacity: 0.95;
+    line-height: 1em;
+    margin-left: 0.2em;
+}
+
+.ayoicon-delicious:before { content: '\23'; } /* '#' */
+.ayoicon-stumbleupon:before { content: '\2f'; } /* '/' */
+.ayoicon-fivehundredpx:before { content: '\30'; } /* '0' */
+.ayoicon-pinterest:before { content: '\31'; } /* '1' */
+.ayoicon-foursquare:before { content: '\34'; } /* '4' */
+.ayoicon-ninetyninedesigns:before { content: '\39'; } /* '9' */
+.ayoicon-forrst:before { content: '\3a'; } /* ':' */
+.ayoicon-digg:before { content: '\3b'; } /* ';' */
+.ayoicon-reddit:before { content: '\3e'; } /* '&gt;' */
+.ayoicon-dribbble:before { content: '\44'; } /* 'D' */
+.ayoicon-klout:before { content: '\4b'; } /* 'K' */
+.ayoicon-rss:before { content: '\52'; } /* 'R' */
+.ayoicon-youtube:before { content: '\55'; } /* 'U' */
+.ayoicon-windows:before { content: '\57'; } /* 'W' */
+.ayoicon-xing:before { content: '\58'; } /* 'X' */
+.ayoicon-myspace:before { content: '\5f'; } /* '_' */
+.ayoicon-plurk:before { content: '\6a'; } /* 'j' */
+.ayoicon-lastfm:before { content: '\6c'; } /* 'l' */
+.ayoicon-soundcloud:before { content: '\73'; } /* 's' */
+.ayoicon-wordpress:before { content: '\77'; } /* 'w' */
+.ayoicon-posterous:before { content: '\7e'; } /* '~' */
+.ayoicon-bitbucket:before { content: '\e9'; } /* 'é' */
+.ayoicon-facebook:before { content: '\f300'; } /* '' */
+.ayoicon-twitter:before { content: '\f303'; } /* '' */
+.ayoicon-icq:before { content: '\f304'; } /* '' */
+.ayoicon-github:before { content: '\f308'; } /* '' */
+.ayoicon-googleplus:before { content: '\f309'; } /* '' */
+.ayoicon-skype:before { content: '\f30b'; } /* '' */
+.ayoicon-vimeo:before { content: '\f30f'; } /* '' */
+.ayoicon-tumblr:before { content: '\f311'; } /* '' */
+.ayoicon-blogger:before { content: '\f314'; } /* '' */
+.ayoicon-deviantart:before { content: '\f316'; } /* '' */
+.ayoicon-jabber:before { content: '\f317'; } /* '' */
+.ayoicon-linkedin:before { content: '\f31a'; } /* '' */
+.ayoicon-instagram:before { content: '\f31f'; } /* '' */
+.ayoicon-behance:before { content: '\f34e'; } /* '' */
+
+a.ayosocial {
+    background-color: #888;
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 1em;
+    padding: 0.725em 0.5em;
+    margin: 0 2px 5px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.2);  
+    position: relative;
+    z-index: 0;
+    -webkit-box-shadow: inset 0 0 0 1px rgba(0,0,0,.1), inset 0 2px 0 rgba(255,255,255,0.25), 0 1px 3px rgba(0,0,0,0.25);
+    -moz-box-shadow: inset 0 0 0 1px rgba(0,0,0,.1), inset 0 2px 0 rgba(255,255,255,0.25), 0 1px 3px rgba(0,0,0,0.25);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.1), inset 0 2px 0 rgba(255,255,255,0.25), 0 1px 3px rgba(0,0,0,0.25);
+    -webkit-transition: background-color .15s ease-out;
+    -moz-transition: background-color .15s ease-out;
+    -ms-transition: background-color .15s ease-out;
+    -o-transition: background-color .15s ease-out;
+    transition: background-color .15s ease-out;
+}
+
+a.ayosocial:active{
+    position: relative;
+    top: 1px;
+}
+
+a.ayosocial:before {
+    background-color: rgba(255,255,255,0.1);
+    content: '';
+    width: 100%;
+    height: 15%;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+
+a.ayosocial,
+a.ayosocial:before,
+a.ayosocial:after,
+a.ayosocial:hover:after,
+a.ayosocial:active:after {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+a.ayosocial.delicious:hover { background-color: #285DA7!important; color: #fff!important; }
+a.ayosocial.stumbleupon:hover { background-color: #eb4924!important; color: #fff!important; }
+a.ayosocial.fivehundredpx:hover { background-color: #222!important; color: #fff!important; }
+a.ayosocial.pinterest:hover { background-color: #d73532!important; color: #fff!important; }
+a.ayosocial.foursquare:hover { background-color: #0086be!important; color: #fff!important; }
+a.ayosocial.ninetyninedesigns:hover { background-color: #ff5501!important; color: #fff!important; }
+a.ayosocial.forrst:hover { background-color: #00a16b!important; color: #fff!important; }
+a.ayosocial.digg:hover { background-color: #1b5891!important; color: #fff!important; }
+a.ayosocial.reddit:hover { background-color: #a0b5ca!important; color: #fff!important; }
+a.ayosocial.dribbble:hover { background-color: #f46899!important; color: #fff!important; }
+a.ayosocial.klout:hover { background-color: #e34601!important; color: #fff!important; }
+a.ayosocial.rss:hover { background-color: #ff5501!important; color: #fff!important; }
+a.ayosocial.youtube:hover { background-color: #ff3033!important; color: #fff!important; }
+a.ayosocial.windows:hover { background-color: #356cbe!important; color: #fff!important; }
+a.ayosocial.xing:hover { background-color: #00605e!important; color: #fff!important; }
+a.ayosocial.myspace:hover { background-color: #222!important; color: #fff!important; }
+a.ayosocial.plurk:hover { background-color: #dd3f18!important; color: #fff!important; }
+a.ayosocial.lastfm:hover { background-color: #b40735!important; color: #fff!important; }
+a.ayosocial.soundcloud:hover { background-color: #fe5419!important; color: #fff!important; }
+a.ayosocial.wordpress:hover { background-color: #22769b!important; color: #fff!important; }
+a.ayosocial.posterous:hover { background-color: #ffe173!important; color: #fff!important; }
+a.ayosocial.bitbucket:hover { background-color: #013567!important; color: #fff!important; }
+a.ayosocial.facebook:hover { background-color: #43609c!important; color: #fff!important; }
+a.ayosocial.twitter:hover { background-color: #28a9e2!important; color: #fff!important; }
+a.ayosocial.icq:hover { background-color: #4ed20f!important; color: #fff!important; }
+a.ayosocial.github:hover { background-color: #3b3b3b!important; color: #fff!important; }
+a.ayosocial.googleplus:hover { background-color: #dd4b39!important; color: #fff!important; }
+a.ayosocial.skype:hover { background-color: #10bef1!important; color: #fff!important; }
+a.ayosocial.vimeo:hover { background-color: #41b2de!important; color: #fff!important; }
+a.ayosocial.tumblr:hover { background-color: #2e5e82!important; color: #fff!important; }
+a.ayosocial.blogger:hover { background-color: #ff6300!important; color: #fff!important; }
+a.ayosocial.deviantart:hover { background-color: #56685c!important; color: #fff!important; }
+a.ayosocial.jabber:hover { background-color: #1b5891!important; color: #fff!important; }
+a.ayosocial.linkedin:hover { background-color: #0173b2!important; color: #fff!important; }
+a.ayosocial.instagram:hover { background-color: #47403a!important; color: #fff!important; }
+a.ayosocial.behance:hover { background-color: #2f9ad2!important; color: #fff!important; }
+
+/* Ayo Action
+-------------------------------------------------------------- */
+.ayo_action{
+    padding-bottom: 0.5em;
+    text-align: center;
+}
+
+.ayo_action p {
+    font-size: 24px;
+}
+
+.action_button_wrap {
+    margin: 25px 0;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    z-index: 0;
+}
+
+.action_button_wrap:after{
+    background-color: #fcfcfc;
+    content: '';
+    width: 300px;
+    max-width: 100%;
+    height: 100%;
+    display: block;
+    margin-left: -150px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: -999;
+}
+
+.action_button_wrap a{
+    color: #fff;
+    display: inline-block;
+    *display: inline;
+    font-size: 16px;
+    line-height: 28px;
+    max-width: 290px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    z-index: 0;
+    zoom: 1;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5), 0 0 0 8px rgba(0,0,0,0.03), inset 0 0 0 1px rgba(0,0,0,.2), inset 0 2px 0 rgba(255,255,255,0.25);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5), 0 0 0 8px rgba(0,0,0,0.03), inset 0 0 0 1px rgba(0,0,0,.2), inset 0 2px 0 rgba(255,255,255,0.25);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5), 0 0 0 8px rgba(0,0,0,0.03), inset 0 0 0 1px rgba(0,0,0,.2), inset 0 2px 0 rgba(255,255,255,0.25);
+}
+
+.action_button_wrap a:active { top: 1px; }
+
+.action_button_wrap a:hover:after{
+    background-color: rgba(255,255,255,0.25);
+    content: '';
+    width: 100%;
+    height: 99%;
+    display: block;
+    position: absolute;
+    text-decoration: none;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+}
+
+.action_button_wrap a:active:after {
+    background-color: rgba(0,0,0,0.1);
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+}
+
+.icon-action{
+    background: rgba(0,0,0,0.1);
+    position: absolute;
+    top: 9px;
+    width: 25px;
+    height: 25px;
+    margin: 0;
+    line-height: 25px;
+    right: 10px;
+    padding: 3px;
+    border-radius: 50px;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.25);
+    box-shadow: inset 0 1px 0 rgba(0,0,0,0.25), 0 1px 0 rgba(255,255,255,0.2)
+}
+
+.icon-action i {
+    font-size: 16px!important;
+    margin: 0;
+    line-height: 24px!important;
+}
+
+/* Ayo Buttons
+-------------------------------------------------------------- */
+a.ayo_button {
+    display: inline-block;
+    *display: inline;
+    line-height: 1.25em!important;
+    padding: 10px 20px;
+    position: relative;
+    margin: 0.2em;
+    zoom: 1;
+    z-index: 0;
+    -webkit-box-shadow: inset 0 0 0 1px rgba(0,0,0,.2), inset 0 2px 0 rgba(255,255,255,0.25);
+    -moz-box-shadow: inset 0 0 0 1px rgba(0,0,0,.2), inset 0 2px 0 rgba(255,255,255,0.25);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.2), inset 0 2px 0 rgba(255,255,255,0.25);
+}
+
+a.ayo_button,
+a.ayo_button:hover {
+    text-decoration: none;
+}
+
+a.ayo_button:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+a.ayo_button:hover:after {
+    background-color: rgba(255,255,255,0.25);
+    content: '';
+    width: 100%;
+    height: 99%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+a.ayo_button:active:after {
+    background-color: rgba(0,0,0,0.1);
+    -webkit-box-shadow: inset 0 1px 5px rgba(0,0,0,0.5);
+    -moz-box-shadow: inset 0 1px 5px rgba(0,0,0,0.5);
+    box-shadow: inset 0 1px 5px rgba(0,0,0,0.5);
+}
+
+a.ayo_button,
+a.ayo_button:before,
+a.ayo_button:after {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+a.ayo_button.rounded,
+a.ayo_button.rounded:before,
+a.ayo_button.rounded:after {
+    -webkit-border-radius: 999em;
+    -moz-border-radius: 999em;
+    border-radius: 999em;
+}
+
+/* Ayo Alert
+-------------------------------------------------------------- */
+.ayo_alert{
+    background-color:#FEFEFE;
+    border: 1px solid #EAEAEA;
+    padding: 10px;
+}
+
+.ayo_alert p { margin: 0 0 20px!important; }
+
+.ayo_alert.info{ 
+    background-color:#D9EDF7;
+    border-color: #BCE8F1;
+    color: #3A87AD;
+}
+.ayo_alert.info h1,
+.ayo_alert.info h2,
+.ayo_alert.info h3,
+.ayo_alert.info h4,
+.ayo_alert.info h5,
+.ayo_alert.info h6,
+.ayo_alert.info p { color: #3A87AD; }
+
+.ayo_alert.warning{ 
+    background-color: #FCF8E3;
+    border-color: #FBEED5;
+    color: #C09853;
+}
+.ayo_alert.warning h1,
+.ayo_alert.warning h2,
+.ayo_alert.warning h3,
+.ayo_alert.warning h4,
+.ayo_alert.warning h5,
+.ayo_alert.warning h6,
+.ayo_alert.warning p { color: #C09853; }
+
+.ayo_alert.error{ 
+    background-color:#F2DEDE;
+    border-color: #EED3D7;
+    color: #B94A48;
+}
+.ayo_alert.error h1,
+.ayo_alert.error h2,
+.ayo_alert.error h3,
+.ayo_alert.error h4,
+.ayo_alert.error h5,
+.ayo_alert.error h6,
+.ayo_alert.error p { color: #B94A48; }
+
+.ayo_alert.success{
+    background-color:#DFF0D8;
+    border-color: #D6E9C6;
+    color:#468847;
+}
+.ayo_alert.success h1,
+.ayo_alert.success h2,
+.ayo_alert.success h3,
+.ayo_alert.success h4,
+.ayo_alert.success h5,
+.ayo_alert.success h6,
+.ayo_alert.success p { color:#468847; }
+
+.ayo_alert_wrap .close {
+    position: relative;
+    line-height: 20px;
+    top: 8px;
+    right: 10px;
+}
+
+.ayo_alert_wrap .close {
+    background: none;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 20px;
+    color: #000000;
+    text-shadow: 0 1px 0 #ffffff;
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+}
+
+.ayo_alert_wrap .close:hover {
+    background: none;
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+}
+
+.ayo_alert_wrap button.close {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+}
+
+.fade {
+    opacity: 0;
+    -webkit-transition: opacity 0.25s linear;
+    -moz-transition: opacity 0.25s linear;
+    -o-transition: opacity 0.25s linear;
+    transition: opacity 0.25s linear;
+}
+
+.fade.in { opacity: 1; }
+
+/* Ayo Columns
+-------------------------------------------------------------- */
+.ayo-one-half { width: 48%; }
+.ayo-one-third { width: 30.66%; }
+.ayo-two-third { width: 65.33%; }
+.ayo-one-fourth { width: 22%; }
+.ayo-three-fourth { width: 74%; }
+.ayo-one-fifth { width: 16.8%; }
+.ayo-two-fifth { width: 37.6%; }
+.ayo-three-fifth { width: 58.4%; }
+.ayo-four-fifth { width: 67.2%; }
+.ayo-one-sixth { width: 13.33%; }
+.ayo-five-sixth { width: 82.67%; }
+
+.ayo-one-half,
+.ayo-one-third,
+.ayo-two-third,
+.ayo-three-fourth,
+.ayo-one-fourth,
+.ayo-one-fifth,
+.ayo-two-fifth,
+.ayo-three-fifth,
+.ayo-four-fifth,
+.ayo-one-sixth,
+.ayo-five-sixth,
+.ayo-full-width {
+    border: 0px solid rgba(0,0,0,0);
+    float: left;    
+    margin-right: 4%;
+    margin-bottom: 2.5em;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-background-clip: padding-box !important;
+    -webkit-background-clip: padding-box !important;
+    background-clip: padding-box !important;
+}
+
+.ayo-full-width {
+    display: block;
+    float: none;
+    margin-right: 0!important;
+    width: 100%;
+}
+
+.ayo-last-column {
+    margin-right: 0!important;
+    clear: right;
+}
+
+/* Ayo Notes
+-------------------------------------------------------------- */
+.ayo_notes{
+    background: url(../img/notes_white.png) 0 0 repeat;
+    font-size: 13px;
+    padding: 28px 28px 28px 42px;
+    overflow: hidden;
+    position: relative;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.75);
+    z-index: 0;
+}
+
+.ayo_notes h1,
+.ayo_notes h2,
+.ayo_notes h3,
+.ayo_notes h4,
+.ayo_notes h5,
+.ayo_notes h6,
+.ayo_notes p {
+    line-height: 29px!important;
+    margin: 0 0 29px;
+}
+
+.ayo_notes.red{
+    background: url(../img/notes_red.png) 0 0 repeat;
+    color: #913A3A;
+}
+.ayo_notes.red h1,
+.ayo_notes.red h2,
+.ayo_notes.red h3,
+.ayo_notes.red h4,
+.ayo_notes.red h5,
+.ayo_notes.red h6,
+.ayo_notes.red p { color: #913A3A; }
+
+.ayo_notes.green{
+    background: url(../img/notes_green.png) 0 0 repeat;
+    color: #348324;
+}
+.ayo_notes.green h1,
+.ayo_notes.green h2,
+.ayo_notes.green h3,
+.ayo_notes.green h4,
+.ayo_notes.green h5,
+.ayo_notes.green h6,
+.ayo_notes.green p { color: #348324; }
+
+.ayo_notes.blue{
+    background: url(../img/notes_blue.png) 0 0 repeat;
+    color: #1361A8;
+}
+.ayo_notes.blue h1,
+.ayo_notes.blue h2,
+.ayo_notes.blue h3,
+.ayo_notes.blue h4,
+.ayo_notes.blue h5,
+.ayo_notes.blue h6,
+.ayo_notes.blue p { color: #1361A8; }
+
+.ayo_notes.orange{
+    background: url(../img/notes_yellow.png) 0 0 repeat;
+    color: #583F0A;
+}
+.ayo_notes.orange h1,
+.ayo_notes.orange h2,
+.ayo_notes.orange h3,
+.ayo_notes.orange h4,
+.ayo_notes.orange h5,
+.ayo_notes.orange h6,
+.ayo_notes.orange p { color: #583F0A; }
+
+/* SkillBar
+-------------------------------------------------------------- */
+.ayo-progress {
+    position: relative;
+    display: block;
+    margin-bottom: 20px;
+    width: 100%;
+    background: #eee;
+    height: 24px;
+    -webkit-transition: background-color .3s ease-out, width .3s ease-out;
+    -moz-transition: background-color .3s ease-out, width .3s ease-out;
+    -ms-transition: background-color .3s ease-out, width .3s ease-out;
+    -o-transition: background-color .3s ease-out, width .3s ease-out;
+    transition: background-color .3s ease-out, width .3s ease-out;
+}
+
+.ayo-progress-title {
+    background-color: #444;
+    color: #fff;
+    font-size: 13px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.1);
+}
+
+.ayo-progress-title span {
+    background-color: rgba(0,0,0,0.25);
+    display: block;
+    height: 24px;
+    padding: 0 15px;
+    line-height: 24px;
+}
+
+.ayo-progress-bar {
+    background-color: #444;
+    height: 24px;
+    width: 0px;
+}
+
+/* Ayo Testimonial
+-------------------------------------------------------------- */
+.ayo_testimonial{
+    background: #fff;
+    border: 1px solid #eaeaea;
+    margin-bottom: 50px;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    z-index: 0;
+}
+
+.ayo_testimonial a:hover{
+    color: #333;
+}
+
+.ayo_testimonial:before {
+    content: "\0201C";
+    color: #eaeaea;
+    display: block;
+    font-family: georgia, serif;
+    font-size: 120px;
+    line-height: 1;
+    height: 50px;
+    width: 42px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: -1
+}
+
+.ayo_testimonial_name {
+    display: block;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+.ayo_testimonial_photo {
+    background: #fff;
+    border: 1px solid #eaeaea;
+    display: block;
+    bottom: -51px;
+    left: 50%;
+    overflow: hidden;
+    padding: 4px;
+    margin-left: -51px;
+    position: absolute;
+    z-index: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.ayo_testimonial_photo img{
+    background: #fff;
+    display: block;
+    padding: 0!important;
+    margin: 0!important;
+}
+
+.ayo_testimonial_photo,
+.ayo_testimonial_photo img {
+    -webkit-border-radius: 500px !important;
+    -moz-border-radius: 500px !important;
+    border-radius: 500px !important;
+}
+
+/* Ayo Latest Tweet
+-------------------------------------------------------------- */
+ul.ayo_latest_tweets {
+    padding: 0;
+    margin: 0 0 20px;
+    list-style-type: none
+}
+
+.latest-tweets li i,
+ul.ayo_latest_tweets li i {
+    float: left;
+    margin: 5px 10px 0 0;
+    color: #14A7FA;
+}
+
+ul.ayo_latest_tweets li {
+    margin: 0 0 10px;
+}
+
+.latest-tweets li .the_tweet,
+ul.ayo_latest_tweets li .the_tweet {
+    overflow: hidden;
+}
+
+/* Ayo Pricing Table
+-------------------------------------------------------------- */
+
+ul.ayo_latest_tweets {
+    padding: 0;
+    margin: 0 0 20px;
+    list-style-type: none
+}
+
+.latest-tweets li i,
+ul.ayo_latest_tweets li i {
+    float: left;
+    margin: 5px 10px 0 0;
+    color: #14A7FA;
+}
+
+ul.ayo_latest_tweets li {
+    margin: 0 0 10px;
+}
+
+.latest-tweets li .the_tweet,
+ul.ayo_latest_tweets li .the_tweet {
+    overflow: hidden;
+}
+
+/* Ayo Pricing Table
+-------------------------------------------------------------- */
+
+.ayo_pricing {
+    line-height: 1em;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    position: relative;
+    z-index: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.ayo_pricing_header{
+    padding: 20px 0;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-bottom-width: 0;
+    position: relative;
+    z-index: 0;
+    -webkit-box-shadow: inset 0 1px 0 0 rgba(255,255,255,.2);
+    -moz-box-shadow: inset 0 1px 0 0 rgba(255,255,255,.2);
+    box-shadow: inset 0 1px 0 0 rgba(255,255,255,.2);
+}
+
+.ayo_pricing_header:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.ayo_pricing ul,
+.ayo_pricing ul li,
+.ayo_pricing p {
+    display: block;
+    padding: 0;
+    margin: 0;
+    list-style-type: none!important
+}
+
+.ayo_pricing ul {
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    margin-bottom: 0!important;
+    padding: 0;
+}
+
+.ayo_pricing ul li {
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #fff;
+    margin: 0!important;
+    overflow: hidden;
+    padding: 1em 0;
+
+}
+
+.ayo_pricing ul li:last-child {
+    border-bottom: none
+}
+
+.ayo_pricing h4 {
+    text-transform: uppercase;
+
+}
+
+.ayo_pricing h4,
+.ayo_pricing p{
+    line-height: 1.25em!important;
+    margin: 0;
+    padding: 0;
+}
+
+.ayo_pricing p {
+    margin-bottom: 0!important
+}
+
+p.ayo_pricing_value { font-size: 28px!important }
+
+.ayo_pricing li i { width: auto; }
+
+.ayo_pricing_plan .ayo_button { margin: 0;}
+
+/* Tooltip
+-------------------------------------------------------------- */
+.tooltip {
+    position: absolute;
+    z-index: 1030;
+    display: block;
+    font-size: 11px;
+    line-height: 1.4;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    visibility: visible;
+}
+
+.tooltip.in {
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+}
+
+.tooltip.top {
+    padding: 5px 0;
+    margin-top: -10px;
+}
+
+.tooltip-inner {
+    max-width: 200px;
+    padding: 8px;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    background-color: #000000;
+    -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+.tooltip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+
+.tooltip.top .tooltip-arrow {
+    bottom: 0;
+    left: 50%;
+    margin-left: -5px;
+    border-top-color: #000000;
+    border-width: 5px 5px 0;
+}
+
+/* Google Maps Tweaks
+-------------------------------------------------------------- */
+.ayo_map_canvas {
+    display: block;
+    max-width: 100%;
+    height: 300px;
+}
+
+.ayo_map_canvas img{
+    max-width: none;
+}
+
+.ayo_gmaps_content {
+    overflow: hidden;
+}
+
+.ayo_gmaps_content h4{
+    font-size: 16px;
+    line-height: 1em!important;
+    margin: 0 0 10px!important;
+}
+
+.ayo_gmaps_content p{
+    line-height: 1.3em!important;
+    font-size: 13px;
+    margin: 0 0 10px!important;
+}
+
+/* Pre
+-------------------------------------------------------------- */
+.ayo_pre {
+    background: url(../img/pre_bg.png);
+    border: 1px solid #eaeaea;
+    direction:ltr;    
+    display: block;
+    font: 13px/24px 'andale mono', 'lucida console', monospace;
+    overflow-x: visible;
+    overflow-y: hidden;
+    color: #666;
+}
+
+.ayo_pre pre,
+.ayo_pre code{
+    display: block;
+    padding: 24px;
+    margin: 0;
+    width: 100%;
+    white-space: pre;
+    word-wrap: normal;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-background-clip: padding-box !important;
+    -webkit-background-clip: padding-box !important;
+    background-clip: padding-box !important;
+}
+
+/* Constant
+-------------------------------------------------------------- */
+.action_button_wrap a,
+a.ayo_button:before,
+.ayo_pricing_header:before {
+    background-image: url(../img/10pb.png);
+    background-repeat: repeat-x;
+    background-position: left bottom;
+}
+
+[class^="ayo-"] p:last-child,
+[class*="ayo-"] p:last-child,
+[class^="ayo_"] p:last-child,
+[class*="ayo_"] p:last-child{
+    margin-bottom: 0!important
+}

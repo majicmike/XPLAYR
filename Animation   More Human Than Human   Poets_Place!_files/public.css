@@ -1,0 +1,86 @@
+.author-recommended-posts {
+	position: relative;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+}
+.author-recommended-posts ol,
+.author-recommended-posts ol li {
+	position: relative;
+	list-style-type: none;
+	padding-left: 0;
+	margin-left: 0;
+}
+.author-recommended-posts ol li {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+}
+.author-recommended-posts ol li.has-thumbnail {
+	min-height: 50px;
+}
+.author-recommended-posts ol li > div {
+	position: relative;
+	overflow: hidden;
+	display: block;
+	float: left;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+.author-recommended-posts .related-thumbnail {
+	position: relative;
+	display: block;
+	width: 70px;
+	height: 50px;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	margin: 0 10px 10px 0;
+	text-decoration: none;
+	float: left;
+}
+.author-recommended-posts .related-title {
+	display: block;
+	float: left;
+	padding-top: 5px;
+}
+
+/*Horizontaly formated*/
+.author-recommended-posts.horizontal ol {
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	line-height: 1;
+}
+.author-recommended-posts.horizontal ol li {
+	display: block;
+	width: 33%;
+	padding: 0 5px;
+	float: left;
+}
+.author-recommended-posts.horizontal .related-thumbnail {
+	display: block;
+	width: 40%;
+	height: 50px;
+	margin: 0;
+	float: left;
+}
+.author-recommended-posts.horizontal .related-title {
+	display: block;
+}
+.author-recommended-posts.horizontal li.has-thumbnail .related-title {
+	width: 55%;
+	float: right;
+}
+
+/*Verticaly formated*/
+.author-recommended-posts.vertical ol,
+.author-recommended-posts.vertical ol li {
+	float: left;
+	clear: both;
+	width: 100%;
+}
